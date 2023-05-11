@@ -26,7 +26,7 @@ RSpec.describe LinkedList do
     expect(list.head.next_node).to eq nil
   end
 
-  it 'can count of nodes in the linked list' do
+  it 'can count nodes in the linked list' do
     list = LinkedList.new
 
     list.append("doop")
@@ -50,5 +50,15 @@ RSpec.describe LinkedList do
     expect(list.head.next_node.data).to eq("beep")
     expect(list.head.next_node.next_node.data).to eq("duub")
     expect(list.head.next_node.next_node.next_node).to eq nil
+  end
+
+  it 'can count multiple nodes' do
+    list = LinkedList.new
+
+    list.append("doop")
+    list.append("beep")
+    list.append("duub")
+    list.append("boot")
+    expect(list.count).to eq 4
   end
 end
