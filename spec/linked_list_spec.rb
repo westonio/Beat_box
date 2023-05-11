@@ -47,5 +47,6 @@ RSpec.describe LinkedList do
     list.append("beep")
     expect(list.head.data).to eq("doop")
     expect(list.head.next_node.data).to eq("beep")
+    expect(list.head.next_node.next_node).to eq nil
   end
 end
