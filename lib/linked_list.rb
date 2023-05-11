@@ -10,4 +10,8 @@ class Linked_List
     @count += 1
     @head = Node.new(sound)
   end
+
+  def to_string
+    @head.data.to_s
+  end
 end

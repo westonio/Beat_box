@@ -1,6 +1,7 @@
 require './lib/linked_list'
 require './lib/node'
 require 'rspec'
+require 'pry'
 
 
 RSpec.describe Linked_List do
@@ -29,5 +30,12 @@ RSpec.describe Linked_List do
 
     list.append("doop")
     expect(list.count).to eq 1
+  end
+
+  it 'can return the nodes data as a string' do
+    list = Linked_List.new
+
+    list.append("doop")
+    expect(list.to_string).to eq("doop")
   end
 end
