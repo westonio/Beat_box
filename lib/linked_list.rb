@@ -4,4 +4,9 @@ class Linked_List
   def initialize
     @head = nil
   end
+
+  def append(sound)
+    node = Node.new(sound)
+    @head = node
+  end
 end
