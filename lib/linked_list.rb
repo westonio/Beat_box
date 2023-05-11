@@ -3,21 +3,26 @@ class LinkedList
 
   def initialize
     @head = nil
-    @count = 0 # This is incorrect usage based off of requirements, need to re-write as a separate method
+    @count = 0
   end
+
 
   def append(sound)
     if @head == nil
       @count += 1
       @head = Node.new(sound)
     else
+      current_node = @head
+      until current_node.next_node == nil
+        current_node = current_node.next_node
+      end
       @count += 1
-      @head.add_node(sound)
+      current_node.add_node(sound)
     end
   end
 
 
-  def to_string
+  def to_string # Need to re-write to allow for multiple strings together
     @head.data.to_s
   end
 end
