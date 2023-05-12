@@ -8,6 +8,10 @@ class Node
 
   # Adds the next node in the list
   def add_node(data)
-    @next_node = Node.new(data)
+    if data.is_a?(Node)
+      @next_node = data
+    else
+      @next_node = Node.new(data)
+    end
   end
 end
