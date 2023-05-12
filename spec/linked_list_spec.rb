@@ -61,4 +61,14 @@ RSpec.describe LinkedList do
     list.append("boot")
     expect(list.count).to eq 4
   end
+
+  it 'can return all nodes data as a single string' do
+    list = LinkedList.new
+
+    list.append("doop")
+    list.append("beep")
+    list.append("duub")
+    list.append("boot")
+    expect(list.to_string).to eq("doop beep duub boot")
+  end
 end
