@@ -11,11 +11,12 @@ class LinkedList
     if current_node == nil
       current_count
     else
+      current_count = 1 # This accounts for if there is only a head node
       until current_node.next_node == nil
         current_node = current_node.next_node
         current_count += 1
       end
-      current_count + 1 # This accounts for if there is only a head node
+      current_count
     end 
   end
 
@@ -55,6 +56,22 @@ class LinkedList
       new_head = Node.new(sound)
       new_head.add_node(old_head)
       @head = new_head
+    end
+  end
+
+
+  def insert(number, sound)
+    current_node = @head
+    if current_node == nil && number != 0 || number > count
+      "The list is currently #{count} nodes long. You cannot insert a node here."
+    else
+      position = number - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
+      position.times do
+        current_node = current_node.next_node
+      end
+      pointer_node = current_node.next_node
+      new_node = current_node.add_node(sound)
+      new_node.add_node(pointer_node)
     end
   end
 end
