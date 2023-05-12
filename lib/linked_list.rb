@@ -73,9 +73,14 @@ class LinkedList
       position.times do
         current_node = current_node.next_node
       end
-      pointer_node = current_node.next_node
-      new_node = current_node.add_node(sound)
-      new_node.add_node(pointer_node)
+      
+      if current_node.next_node == nil
+        new_node = current_node.add_node(sound)
+      else
+        pointer_node = current_node.next_node # This is nil
+        new_node = current_node.add_node(sound)
+        new_node.add_node(pointer_node)
+      end
     end
   end
 end
