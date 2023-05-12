@@ -87,8 +87,17 @@ RSpec.describe LinkedList do
     list.append("doop")
     list.append("beep")
     list.append("duub")
-    list.insert(1,"siip")
+    list.insert(0,"siip")
     expect(list.to_string).to eq("doop siip beep duub")
     expect(list.head.next_node.data).to eq("siip")
+  end
+
+  it 'gives an error if trying to insert node at invalid position' do
+    list = LinkedList.new
+
+    list.append("doop")
+    list.append("beep")
+    
+    expect(list.insert(4,"siip")).to eq("The list is currently 2 nodes long. You cannot insert a node here.")
   end
 end
