@@ -15,7 +15,7 @@ class LinkedList
         current_node = current_node.next_node
         current_count += 1
       end
-      current_count + 1 # This +1 accounts for the tail node, which stopped the until statement above
+      current_count + 1 # This accounts for if there is only a head node
     end 
   end
 
@@ -44,5 +44,17 @@ class LinkedList
       end
     end
     string
+  end
+
+
+  def prepend(sound)
+    if @head == nil
+      @head = Node.new(sound)
+    else
+      old_head = @head
+      new_head = Node.new(sound)
+      new_head.add_node(old_head)
+      @head = new_head
+    end
   end
 end
