@@ -81,4 +81,14 @@ RSpec.describe LinkedList do
     expect(list.head.next_node.data).to eq("doop")
   end
 
+  it 'can insert at a given position in the linked list' do
+    list = LinkedList.new
+
+    list.append("doop")
+    list.append("beep")
+    list.append("duub")
+    list.insert(1,"siip")
+    expect(list.to_string).to eq("doop siip beep duub")
+    expect(list.head.next_node.data).to eq("siip")
+  end
 end
