@@ -27,4 +27,13 @@ RSpec.describe Node do
     expect(node.next_node).to be_an_instance_of(Node)
     expect(node.next_node.data).to eq("poot")
   end
+
+  it 'can add existing nodes to next_node' do
+    node_1 = Node.new("splooie")
+    node_2 = Node.new("boooie")
+    
+    node_2.add_node(node_1)
+    expect(node_2.next_node).to eq(node_1)
+    expect(node_1.next_node).to eq nil
+  end
 end
