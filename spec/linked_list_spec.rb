@@ -108,4 +108,14 @@ RSpec.describe LinkedList do
     list.insert(0,"siip")
     expect(list.to_string).to eq("siip doop")
   end
+
+  it 'can insert a node at the end' do
+    list = LinkedList.new
+    
+    list.append("doop")
+    list.append("beep")
+    list.append("duub")
+    list.insert(3,"siip")
+    expect(list.to_string).to eq("doop beep duub siip")
+  end
 end
