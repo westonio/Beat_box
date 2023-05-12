@@ -19,4 +19,12 @@ RSpec.describe Node do
 
     expect(node.next_node).to eq nil
   end
+
+  it 'has an add_node method' do
+    node = Node.new("splooie")
+    node.add_node("poot")
+
+    expect(node.next_node).to be_an_instance_of(Node)
+    expect(node.next_node.data).to eq("poot")
+  end
 end
