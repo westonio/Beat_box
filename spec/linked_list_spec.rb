@@ -71,4 +71,14 @@ RSpec.describe LinkedList do
     list.append("boot")
     expect(list.to_string).to eq("doop beep duub boot")
   end
+
+  it 'can prepend a node at the beginning' do
+    list = LinkedList.new
+
+    list.append("doop")
+    list.prepend("beep")
+    expect(list.head.data).to eq("beep")
+    expect(list.head.next_node.data).to eq("doop")
+  end
+
 end
