@@ -1,3 +1,5 @@
+require_relative 'node'
+
 class LinkedList
   attr_reader :head, :count
 
@@ -33,6 +35,19 @@ class LinkedList
 
 
   def to_string # Need to re-write to allow for multiple strings together
-    @head.data.to_s
+    string = ""
+    current_node = @head
+    if current_node == nil
+      "There are currently no nodes within the linked list."
+    # elsif count == 1
+    #   string = @head.data # This accounts for when there is only a head in the list
+    else
+      string = @head.data
+      until current_node.next_node == nil
+        current_node = current_node.next_node
+        string = string + " " + current_node.data
+      end
+    end
+    string
   end
 end
