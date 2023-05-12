@@ -64,6 +64,10 @@ class LinkedList
     current_node = @head
     if current_node == nil && number != 0 || number > count
       "The list is currently #{count} nodes long. You cannot insert a node here."
+    elsif number == 0 && current_node == nil
+      append(sound)
+    elsif number == 0 && current_node != nil
+      prepend(sound)
     else
       position = number - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
       position.times do
