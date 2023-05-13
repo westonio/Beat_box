@@ -1,5 +1,5 @@
 class LinkedList
-  attr_reader :head, :count
+  attr_reader :head
 
   def initialize
     @head = nil
@@ -59,17 +59,16 @@ class LinkedList
     end
   end
 
-
-  def insert(number, sound)
+  def insert(position, sound)
     current_node = @head
-    if current_node == nil && number != 0 || number > count
+    if current_node == nil && position != 0 || position > count
       "The list is currently #{count} nodes long. You cannot insert a node here."
-    elsif number == 0 && current_node == nil
+    elsif position == 0 && current_node == nil
       append(sound)
-    elsif number == 0 && current_node != nil
+    elsif position == 0 && current_node != nil
       prepend(sound)
     else
-      position = number - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
+      position = position - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
       position.times do
         current_node = current_node.next_node
       end
@@ -81,6 +80,26 @@ class LinkedList
         new_node = current_node.add_node(sound)
         new_node.add_node(pointer_node)
       end
+    end
+  end
+
+  def find(position,return_num)
+    current_node = @head
+    if current_node == nil || position > count
+      "No data found. The list is currently #{count} nodes long."
+    else
+      #find the node at the given position
+      position = position - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
+      position.times do
+        current_node = current_node.next_node
+      end
+      #return the found nodes
+      string = "" 
+      return_num.times do
+        current_node = current_node.next_node
+        string = string + " #{current_node.data}"
+      end
+      string.lstrip # This removes the leading space created in the loop ( "_dubb" => "dubb" )
     end
   end
 end
