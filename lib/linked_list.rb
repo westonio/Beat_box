@@ -122,4 +122,19 @@ class LinkedList
       includes
     end
   end
+
+  def pop
+    current_node = @head
+
+    if current_node == nil
+      "Error: List is empty"
+    else
+      until current_node.next_node.next_node == nil # until we get to the second to last
+        current_node = current_node.next_node
+      end
+      last_node = current_node.next_node.data
+      current_node.remove_node
+      last_node
+    end
+  end
 end
