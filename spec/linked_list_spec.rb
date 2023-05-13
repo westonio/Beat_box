@@ -128,4 +128,11 @@ RSpec.describe LinkedList do
     find = list.find(2,2)
     expect(find).to eq("duub siip")
   end
+
+  it 'gives an error if trying to find when no nodes present' do
+    list = LinkedList.new
+    
+    find = list.find(3,2)
+    expect(find).to eq("No data found. The list is currently 0 nodes long.")
+  end
 end
