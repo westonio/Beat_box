@@ -164,4 +164,10 @@ RSpec.describe LinkedList do
     expect(list.includes?("beep")).to eq true
     expect(list.includes?("koop")).to eq false
   end
+
+  it 'returns error if .includes? called on empty list' do
+    list = LinkedList.new
+
+    expect(list.includes?("beep")).to eq("Error: List is empty")
+  end
 end
