@@ -104,4 +104,22 @@ class LinkedList
       string.lstrip # This removes the leading space created in the loop ( "_dubb" => "dubb" )
     end
   end
+
+  def includes?(sound)
+    current_node = @head
+    if current_node == nil
+      "Error: List is empty"
+    else
+      until current_node.next_node == nil
+        current_node = current_node.next_node
+        if current_node.data == sound 
+           includes = true 
+           break
+        else
+          includes = false
+        end
+      end
+      includes
+    end
+  end
 end
