@@ -155,4 +155,13 @@ RSpec.describe LinkedList do
     find = list.find(3,2)
     expect(find).to eq("Argument Error: Starting at node 3, only 1 node(s) can be returned")
   end
+
+  it 'has .includes? method' do
+    list = LinkedList.new
+    list.append("doop")
+    list.append("beep")
+
+    expect(list.includes?("beep")).to eq true
+    expect(list.includes?("koop")).to eq false
+  end
 end
