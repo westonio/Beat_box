@@ -119,7 +119,12 @@ class LinkedList
           includes = false
         end
       end
-      includes
+     
+      if @head.data == sound # This returns true if sound is in the head of the list
+        true
+      else
+        includes # This returns true if included anywhere else in the list
+      end
     end
   end
 
