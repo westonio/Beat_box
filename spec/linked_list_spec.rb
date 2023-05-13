@@ -133,6 +133,26 @@ RSpec.describe LinkedList do
     list = LinkedList.new
     
     find = list.find(3,2)
-    expect(find).to eq("No data found. The list is currently 0 nodes long.")
+    expect(find).to eq("No data found at starting point. The list is 0 nodes long.")
+  end
+
+  it 'gives an error if trying to start in position greater than list length' do
+    list = LinkedList.new
+    list.append("doop")
+    list.append("beep")
+
+    find = list.find(3,2)
+    expect(find).to eq("No data found at starting point. The list is 2 nodes long.")
+  end
+
+  it 'gives an error if trying to find more nodes than present' do
+    list = LinkedList.new
+    list.append("doop")
+    list.append("beep")
+    list.append("duub")
+    list.append("siip")
+    
+    find = list.find(3,2)
+    expect(find).to eq("Argument Error: Starting at node 3, only 1 node(s) can be returned")
   end
 end
