@@ -170,4 +170,27 @@ RSpec.describe LinkedList do
 
     expect(list.includes?("beep")).to eq("Error: List is empty")
   end
+
+  it 'has .pop method to remove last node' do
+    list = LinkedList.new
+    list.append("doop")
+    list.append("beep")
+    list.pop
+
+    expect(list.to_string).to eq("doop")
+  end
+
+  it 'returns node that is popped off' do
+    list = LinkedList.new
+    list.append("doop")
+    list.append("beep")
+
+    expect(list.pop).to eq("beep")
+  end
+
+  it 'returns error if list is empty' do
+    list = LinkedList.new
+
+    expect(list.pop).to eq("Error: List is empty")
+  end
 end
