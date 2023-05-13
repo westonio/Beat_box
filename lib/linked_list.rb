@@ -86,7 +86,9 @@ class LinkedList
   def find(position,return_num)
     current_node = @head
     if current_node == nil || position > count
-      "No data found. The list is currently #{count} nodes long."
+      "No data found at starting point. The list is #{count} nodes long."
+    elsif position + return_num > count
+      "Argument Error: Starting at node #{position}, only #{count - position} node(s) can be returned"
     else
       #find the node at the given position
       position = position - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
