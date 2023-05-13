@@ -36,4 +36,13 @@ RSpec.describe Node do
     expect(node_2.next_node).to eq(node_1)
     expect(node_1.next_node).to eq nil
   end
+
+  it 'can remove existing nodes' do
+    node_1 = Node.new("splooie")
+    node_2 = Node.new("boooie")
+
+    node_1.add_node(node_2)
+    node_1.remove_node
+    expect(node_1.next_node).to eq nil
+  end
 end
