@@ -24,8 +24,8 @@ RSpec.describe BeatBox do
     bb.append("deep doo ditt")
 
     expect(bb.list.count).to eq(3)
-    expect(bb.list.head).to eq("deep")
-    expect(bb.list.head.next_node).to eq("doo")
-    expect(bb.list.head.next_node.next_node).to eq("ditt")
+    expect(bb.list.head.data).to eq("deep")
+    expect(bb.list.head.next_node.data).to eq("doo")
+    expect(bb.list.head.next_node.next_node.data).to eq("ditt")
   end
 end
