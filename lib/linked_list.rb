@@ -8,16 +8,13 @@ class LinkedList
   def count
     current_count = 0
     current_node = @head
-    if current_node == nil
-      current_count
-    else
-      current_count = 1 # This accounts for if there is only a head node
-      until current_node.next_node == nil
-        current_node = current_node.next_node
-        current_count += 1
-      end
-      current_count
-    end 
+    
+    until current_node.nil? # until current node== nil
+      current_count += 1
+      current_node = current_node.next_node
+    end
+    
+    current_count
   end
 
   def append(sound)
