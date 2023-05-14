@@ -45,5 +45,7 @@ RSpec.describe BeatBox do
     bb.append("bimmmm nooooo nooooooo noooooo naaaaa bimmm taaaaa pit ti bimmmm taaaaa pit ti bimmmm")
     expect(bb.list.count).to eq(14)
     bb.play # Turn sound ON, this should play the sounds on your computer
+# The line below does not actually verify what was commanded in the terminal
+    # expect(bb.play).to eq(`say -r 200 -v Rocko "bimmmm nooooo nooooooo noooooo naaaaa bimmm taaaaa pit ti bimmmm taaaaa pit ti bimmmm"`)
   end
 end
