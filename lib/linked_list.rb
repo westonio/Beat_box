@@ -44,14 +44,9 @@ class LinkedList
   end
 
   def prepend(sound)
-    if @head == nil
-      @head = Node.new(sound)
-    else
-      old_head = @head
-      new_head = Node.new(sound)
-      new_head.add_node(old_head)
-      @head = new_head
-    end
+    new_head = Node.new(sound) #creates new node
+    new_head.add_node(@head) # add current head as next node
+    @head = new_head # re-assign head to this new node
   end
 
   def insert(position, sound)
