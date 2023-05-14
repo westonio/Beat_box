@@ -9,7 +9,7 @@ class LinkedList
     current_count = 0
     current_node = @head
     
-    until current_node.nil? # until current node== nil
+    until current_node.nil? # until current node == nil
       current_count += 1
       current_node = current_node.next_node
     end
@@ -18,11 +18,11 @@ class LinkedList
   end
 
   def append(sound)
-    if @head == nil
+    if @head.nil?
       @head = Node.new(sound)
     else
       current_node = @head
-      until current_node.next_node == nil
+      until current_node.next_node.nil?
         current_node = current_node.next_node
       end
       current_node.add_node(sound)
