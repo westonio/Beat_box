@@ -6,7 +6,7 @@ class BeatBox
   end
 
   def append(words)
-    words.split(' ').map do |word|
+    words.split(' ').each do |word|
       @list.append(word)
     end
   end
