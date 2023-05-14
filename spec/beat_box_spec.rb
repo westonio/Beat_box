@@ -28,4 +28,13 @@ RSpec.describe BeatBox do
     expect(bb.list.head.next_node.data).to eq("doo")
     expect(bb.list.head.next_node.next_node.data).to eq("ditt")
   end
+
+  it 'can return the count of the list' do
+    bb = BeatBox.new
+    
+    bb.append("deep doo ditt")
+    expect(bb.list.count).to eq(3)
+    bb.append("beep boo bitt")
+    expect(bb.list.count).to eq(6)
+  end
 end
