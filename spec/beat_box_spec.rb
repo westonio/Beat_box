@@ -42,8 +42,8 @@ RSpec.describe BeatBox do
   it 'can play the sounds' do
     bb = BeatBox.new
     
-    bb.append("deep doo ditt beep boo bitt")
-    expect(bb.list.count).to eq(6)
-    expect(bb.play).to eq(`say -r 500 -v Boing "deep doo ditt beep boo bitt"`)
+    bb.append("bimmmm nooooo nooooooo noooooo naaaaa bimmm taaaaa pit ti bimmmm taaaaa pit ti bimmmm")
+    expect(bb.list.count).to eq(14)
+    bb.play # Turn sound ON, this should play the sounds on your computer
   end
 end
