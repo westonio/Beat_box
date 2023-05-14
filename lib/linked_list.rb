@@ -29,21 +29,19 @@ class LinkedList
     end
   end
 
-
   def to_string
     current_node = @head
-    if current_node == nil
-      "There are currently no nodes within the linked list."
-    else
-      string = @head.data # This accounts for when there is only a head in the list
-      until current_node.next_node == nil
-        current_node = current_node.next_node
-        string = string + " " + current_node.data
-      end
-    end
-    string
-  end
+    string = ""
 
+    string = "Error: List is empty" if current_node.nil? # throws error if list is empty
+    
+    until current_node.nil? 
+      string += " #{current_node.data}"
+      current_node = current_node.next_node
+    end
+   
+    string.lstrip # remove the leading space and returns string
+  end
 
   def prepend(sound)
     if @head == nil
