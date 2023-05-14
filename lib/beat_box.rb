@@ -14,4 +14,8 @@ class BeatBox
   def count
     @list.count
   end
+
+  def play
+    `say -r 200 -v Rocko #{@list.to_string}`
+  end
 end
