@@ -12,9 +12,10 @@ RSpec.describe BeatBox do
     expect(bb).to be_an_instance_of(BeatBox)
   end
 
-  it 'has a list' do
+  it 'has an empty list' do
     bb = BeatBox.new
 
     expect(bb.list).to be_an_instance_of(LinkedList)
+    expect(bb.list.head).to eq nil
   end
 end
