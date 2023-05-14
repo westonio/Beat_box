@@ -18,4 +18,14 @@ RSpec.describe BeatBox do
     expect(bb.list).to be_an_instance_of(LinkedList)
     expect(bb.list.head).to eq nil
   end
+
+  it 'adds multiples words from string' do
+    bb = BeatBox.new
+    bb.append("deep doo ditt")
+
+    expect(bb.list.count).to eq(3)
+    expect(bb.list.head).to eq("deep")
+    expect(bb.list.head.next_node).to eq("doo")
+    expect(bb.list.head.next_node.next_node).to eq("ditt")
+  end
 end
