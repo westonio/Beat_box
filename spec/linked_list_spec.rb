@@ -28,8 +28,9 @@ RSpec.describe LinkedList do
 
   it 'can count nodes in the linked list' do
     list = LinkedList.new
+    
+    expect(list.count).to eq 0
     list.append("doop")
-
     expect(list.count).to eq 1
   end
 
