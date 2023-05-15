@@ -56,6 +56,7 @@ class LinkedList
     (number - 1).times do # This ensures we add a node after the given node (e.g. the first node as the head is zero)
       current_node = current_node.next_node
     end
+    
     current_node
   end
 
@@ -97,25 +98,20 @@ class LinkedList
 
   def includes?(sound)
     current_node = @head
-    if current_node == nil
-      "Error: List is empty"
-    else
-      until current_node.next_node == nil
-        current_node = current_node.next_node
-        if current_node.data == sound 
-           includes = true 
-           break
-        else
-          includes = false
-        end
-      end
-     
-      if @head.data == sound # This returns true if sound is in the head of the list
-        true
-      else
-        includes # This returns true if included anywhere else in the list
-      end
+    
+    return "Error: List is empty" if current_node.nil? # first check to see if list is empty
+    
+    includes = false
+    until current_node.nil?
+      if current_node.data == sound 
+        includes = true 
+        break # this ensures true is returned by stopping the loop
+      end 
+      
+      current_node = current_node.next_node
     end
+
+    includes
   end
 
   def pop
