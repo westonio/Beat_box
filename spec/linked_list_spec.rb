@@ -75,11 +75,23 @@ RSpec.describe LinkedList do
 
   it 'can prepend a node at the beginning' do
     list = LinkedList.new
-    list.append("doop")
+    list.prepend("doop")
+    expect(list.head.data).to eq("doop")
 
     list.prepend("beep")
     expect(list.head.data).to eq("beep")
     expect(list.head.next_node.data).to eq("doop")
+  end
+
+  it 'can find the current node position' do
+    list = LinkedList.new
+    node_1 = list.append("doop")
+    node_2 = list.append("beep")
+    node_3 = list.append("duub")
+
+    expect(list.move_position(1)).to eq(node_1)
+    expect(list.move_position(2)).to eq(node_2)
+    expect(list.move_position(3)).to eq(node_3)
   end
 
   it 'can insert at a given position in the linked list' do
@@ -193,6 +205,7 @@ RSpec.describe LinkedList do
   it 'returns error if list is empty' do
     list = LinkedList.new
 
+    expect(list.to_string).to eq("Error: List is empty")
     expect(list.pop).to eq("Error: List is empty")
   end
 end
