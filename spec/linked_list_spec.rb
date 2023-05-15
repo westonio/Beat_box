@@ -223,4 +223,11 @@ RSpec.describe LinkedList do
 
     expect(list.pop).to eq("Error: List is empty")
   end
+
+  it 'can can still pop is only one node' do
+    list = LinkedList.new
+    list.append("doop")
+
+    expect(list.pop).to eq("doop")
+  end
 end
