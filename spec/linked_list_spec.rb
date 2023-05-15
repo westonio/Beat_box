@@ -75,6 +75,12 @@ RSpec.describe LinkedList do
 
     expect(list.to_string).to eq("doop beep duub boot")
   end
+
+  it 'returns error if list is empty' do
+    list = LinkedList.new
+
+    expect(list.to_string).to eq("Error: List is empty")
+  end
   
 # feature .prepend
   it 'can prepend a node at the beginning' do
@@ -98,7 +104,6 @@ RSpec.describe LinkedList do
     expect(list.move_position(2)).to eq(node_2)
     expect(list.move_position(3)).to eq(node_3)
   end
-
 
 # feature .insert
   it 'can insert at a given position in the linked list' do
@@ -136,12 +141,6 @@ RSpec.describe LinkedList do
 
     list.insert(3,"siip")
     expect(list.to_string).to eq("doop beep duub siip")
-  end
-
-  it 'returns error if list is empty' do
-    list = LinkedList.new
-
-    expect(list.to_string).to eq("Error: List is empty")
   end
 
 # feature .find
