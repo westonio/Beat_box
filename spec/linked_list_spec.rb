@@ -10,7 +10,8 @@ RSpec.describe LinkedList do
 
     expect(list).to be_an_instance_of(LinkedList)
   end
-
+  
+# feature .append
   it 'can append nodes' do
     list = LinkedList.new
     list.append("doop")
@@ -18,29 +19,14 @@ RSpec.describe LinkedList do
     expect(list.head).not_to eq nil
     expect(list.head.data).to eq("doop")
   end
-
+  
   it 'has a next_node of nil' do
     list = LinkedList.new
     list.append("doop")
-
+    
     expect(list.head.next_node).to eq nil
   end
-
-  it 'can count nodes in the linked list' do
-    list = LinkedList.new
-    
-    expect(list.count).to eq 0
-    list.append("doop")
-    expect(list.count).to eq 1
-  end
-
-  it 'can return the nodes data as a string' do
-    list = LinkedList.new
-    list.append("doop")
-
-    expect(list.to_string).to eq("doop")
-  end
-
+  
   it 'can append multiple nodes' do
     list = LinkedList.new
     list.append("doop")
@@ -51,6 +37,15 @@ RSpec.describe LinkedList do
     expect(list.head.next_node.data).to eq("beep")
     expect(list.head.next_node.next_node.data).to eq("duub")
     expect(list.head.next_node.next_node.next_node).to eq nil
+  end
+  
+# feature .count
+  it 'can count nodes in the linked list' do
+    list = LinkedList.new
+    
+    expect(list.count).to eq 0
+    list.append("doop")
+    expect(list.count).to eq 1
   end
 
   it 'can count multiple nodes' do
@@ -63,6 +58,14 @@ RSpec.describe LinkedList do
     expect(list.count).to eq 4
   end
 
+# feature .to_string
+  it 'can return the nodes data as a string' do
+    list = LinkedList.new
+    list.append("doop")
+
+    expect(list.to_string).to eq("doop")
+  end
+
   it 'can return all nodes data as a single string' do
     list = LinkedList.new
     list.append("doop")
@@ -72,7 +75,8 @@ RSpec.describe LinkedList do
 
     expect(list.to_string).to eq("doop beep duub boot")
   end
-
+  
+# feature .prepend
   it 'can prepend a node at the beginning' do
     list = LinkedList.new
     list.prepend("doop")
@@ -83,6 +87,7 @@ RSpec.describe LinkedList do
     expect(list.head.next_node.data).to eq("doop")
   end
 
+ # feature .move_position
   it 'can find the current node position' do
     list = LinkedList.new
     node_1 = list.append("doop")
@@ -94,6 +99,8 @@ RSpec.describe LinkedList do
     expect(list.move_position(3)).to eq(node_3)
   end
 
+
+# feature .insert
   it 'can insert at a given position in the linked list' do
     list = LinkedList.new
     list.append("doop")
@@ -131,7 +138,14 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("doop beep duub siip")
   end
 
-  it 'can find a node position and return multiple nodes' do
+  it 'returns error if list is empty' do
+    list = LinkedList.new
+
+    expect(list.to_string).to eq("Error: List is empty")
+  end
+
+# feature .find
+  it 'can find and return multiple nodes' do
     list = LinkedList.new
     list.append("doop")
     list.append("beep")
@@ -169,6 +183,7 @@ RSpec.describe LinkedList do
     expect(find).to eq("Argument Error: Starting at node 3, only 1 node(s) can be returned")
   end
 
+# feature .includes?
   it 'has .includes? method' do
     list = LinkedList.new
     list.append("doop")
@@ -185,6 +200,7 @@ RSpec.describe LinkedList do
     expect(list.includes?("beep")).to eq("Error: List is empty")
   end
 
+# feature .pop
   it 'has .pop method to remove last node' do
     list = LinkedList.new
     list.append("doop")
@@ -205,7 +221,14 @@ RSpec.describe LinkedList do
   it 'returns error if list is empty' do
     list = LinkedList.new
 
-    expect(list.to_string).to eq("Error: List is empty")
     expect(list.pop).to eq("Error: List is empty")
+  end
+
+  it 'can can still pop is only one node' do
+    list = LinkedList.new
+    list.append("doop")
+
+    expect(list.pop).to eq("doop")
+    expect(list.head).to eq(nil)
   end
 end
