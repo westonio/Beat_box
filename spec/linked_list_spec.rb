@@ -229,5 +229,6 @@ RSpec.describe LinkedList do
     list.append("doop")
 
     expect(list.pop).to eq("doop")
+    expect(list.head).to eq(nil)
   end
 end
