@@ -49,11 +49,11 @@ class LinkedList
     @head = new_head # re-assign head to this new node
   end
 
-  # Creating .move_position method to reduce repeated code for .insert and .find
+  # Created .move_position method to reduce repeated code for .insert and .find
   def move_position(number)
     current_node = @head
     
-    (number - 1).times do
+    (number - 1).times do # This ensures we add a node after the given node (e.g. the first node as the head is zero)
       current_node = current_node.next_node
     end
     current_node
@@ -78,24 +78,20 @@ class LinkedList
   end
 
   def find(position,return_num)
-    current_node = @head
-    if current_node == nil || position > count
+    if position > count
       "No data found at starting point. The list is #{count} nodes long."
-    elsif position + return_num > count
+    elsif (position + return_num) > count
       "Argument Error: Starting at node #{position}, only #{count - position} node(s) can be returned"
     else
-      #find the node at the given position
-      position = position - 1 # This ensures we add a node after the given node (e.g. the first node as the head is zero)
-      position.times do
-        current_node = current_node.next_node
-      end
-      #return the found nodes
-      string = "" 
+      current_node = move_position(position)
+
+      found_list = LinkedList.new
       return_num.times do
         current_node = current_node.next_node
-        string = string + " #{current_node.data}"
+        found_list.append(current_node.data)
       end
-      string.lstrip # This removes the leading space created in the loop ( "_dubb" => "dubb" )
+
+      found_list.to_string
     end
   end
 
