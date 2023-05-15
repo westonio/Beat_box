@@ -1,21 +1,21 @@
 class Node
-  attr_reader :data, :next_node
+  attr_reader :data, :next
 
   def initialize(data)
     @data = data
-    @next_node = nil
+    @next = nil
   end
 
   # Adds the next node in the list
-  def add_node(data)
+  def add(data)
     if data.is_a?(Node)
-      @next_node = data
+      @next = data
     else
-      @next_node = Node.new(data)
+      @next = Node.new(data)
     end
   end
 
-  def remove_node
-    @next_node = nil
+  def remove
+    @next = nil
   end
 end

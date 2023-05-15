@@ -6,58 +6,54 @@ class LinkedList
   end
 
   def count
-    current_count = 0
-    current_node = @head
-    
-    until current_node.nil? # until current node == nil
-      current_count += 1
-      current_node = current_node.next_node
+    count = 0
+    node = @head
+    until node.nil? # until current node == nil
+      count += 1
+      node = node.next
     end
-    
-    current_count
+    count
   end
 
   def append(sound)
     if @head.nil?
       @head = Node.new(sound)
     else
-      current_node = @head
-      until current_node.next_node.nil?
-        current_node = current_node.next_node
+      node = @head
+      until node.next.nil?
+        node = node.next
       end
-      current_node.add_node(sound)
+      node.add(sound)
     end
   end
 
   def to_string
-    current_node = @head
+    node = @head
     string = ""
 
-    string = "Error: List is empty" if current_node.nil? # throws error if list is empty
+    string = "Error: List is empty" if node.nil? # throws error if list is empty
     
-    until current_node.nil? 
-      string += " #{current_node.data}"
-      current_node = current_node.next_node
+    until node.nil? 
+      string += " #{node.data}"
+      node = node.next
     end
-   
     string.lstrip # remove the leading space and returns string
   end
 
   def prepend(sound)
-    new_head = Node.new(sound) #creates new node
-    new_head.add_node(@head) # add current head as next node
+    new_head = Node.new(sound) 
+    new_head.add(@head) # add current head as next node
     @head = new_head # re-assign head to this new node
   end
 
-  # Created .move_position method to reduce repeated code for .insert and .find
-  def move_position(number)
-    current_node = @head
+  # Created .move_to method to reduce repeated code for .insert and .find
+  def move_to(position)
+    node = @head
     
-    (number - 1).times do # This ensures we add a node after the given node (e.g. the first node as the head is zero)
-      current_node = current_node.next_node
+    (position - 1).times do # This ensures we add a node after the given node (e.g. the first node as the head is zero)
+      node = node.next
     end
-    
-    current_node
+    node
   end
 
   def insert(position, sound)
@@ -66,14 +62,14 @@ class LinkedList
     elsif position == 0 
       prepend(sound)
     else
-      current_node = move_position(position)
+      node = move_to(position)
       
-      if current_node.next_node.nil? # if at tail, just add
-        current_node.add_node(sound)
+      if node.next.nil? # if at tail, just add
+        node.add(sound)
       else # if not at the tail
-        pointer_node = current_node.next_node 
-        new_node = current_node.add_node(sound) #adds node after current node
-        new_node.add_node(pointer_node) # attaches previous node's next_nod as the next node for inserted
+        pointer = node.next 
+        new_node = node.add(sound) #adds node after current node
+        new_node.add(pointer) # attaches previous node's next_nod as the next node for inserted
       end
     end
   end
@@ -84,52 +80,48 @@ class LinkedList
     elsif (position + return_num) > count
       "Argument Error: Starting at node #{position}, only #{count - position} node(s) can be returned"
     else
-      current_node = move_position(position)
+      node = move_to(position) # first move to position
 
-      found_list = LinkedList.new
+      found = LinkedList.new
       return_num.times do
-        current_node = current_node.next_node
-        found_list.append(current_node.data)
+        node = node.next
+        found.append(node.data)
       end
-
-      found_list.to_string
+      found.to_string
     end
   end
 
   def includes?(sound)
-    current_node = @head
+    node = @head
     includes = false
     
-    return "Error: List is empty" if current_node.nil? # first check to see if list is empty
+    return "Error: List is empty" if node.nil? # first check to see if list is empty
     
-    until current_node.nil?
-      if current_node.data == sound 
+    until node.nil?
+      if node.data == sound 
         includes = true 
         break # this ensures true is returned by stopping the loop
       end 
       
-      current_node = current_node.next_node
+      node = node.next
     end
 
     includes
   end
 
   def pop
-    current_node = @head
-
-    return "Error: List is empty" if current_node.nil?
-  
-    if current_node.next_node.nil? #only one node in the list
-      data = current_node.data
+    node = @head
+    return "Error: List is empty" if node.nil?
+    if node.next.nil? #only one node in the list
+      data = node.data
       @head = nil
     else
-      until current_node.next_node.next_node.nil? # until we get to the second to last
-        current_node = current_node.next_node
+      until node.next.next.nil? # until we get to the second to last
+        node = node.next
       end
-      data = current_node.next_node.data
-      current_node.remove_node
+      data = node.next.data
+      node.remove
     end
-    
     data
   end
 end
