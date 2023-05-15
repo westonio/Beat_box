@@ -119,12 +119,17 @@ class LinkedList
 
     return "Error: List is empty" if current_node.nil?
   
-    until current_node.next_node.next_node.nil? # until we get to the second to last
-      current_node = current_node.next_node
+    if current_node.next_node.nil? #only one node in the list
+      data = current_node.data
+      @head = nil
+    else
+      until current_node.next_node.next_node.nil? # until we get to the second to last
+        current_node = current_node.next_node
+      end
+      data = current_node.next_node.data
+      current_node.remove_node
     end
     
-    last_node = current_node.next_node.data
-    current_node.remove_node
-    last_node
+    data
   end
 end
