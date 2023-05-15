@@ -98,10 +98,10 @@ class LinkedList
 
   def includes?(sound)
     current_node = @head
+    includes = false
     
     return "Error: List is empty" if current_node.nil? # first check to see if list is empty
     
-    includes = false
     until current_node.nil?
       if current_node.data == sound 
         includes = true 
