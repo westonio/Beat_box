@@ -24,7 +24,7 @@ RSpec.describe LinkedList do
     list = LinkedList.new
     list.append("doop")
     
-    expect(list.head.next_node).to eq nil
+    expect(list.head.next).to eq nil
   end
   
   it 'can append multiple nodes' do
@@ -34,9 +34,9 @@ RSpec.describe LinkedList do
     list.append("duub")
 
     expect(list.head.data).to eq("doop")
-    expect(list.head.next_node.data).to eq("beep")
-    expect(list.head.next_node.next_node.data).to eq("duub")
-    expect(list.head.next_node.next_node.next_node).to eq nil
+    expect(list.head.next.data).to eq("beep")
+    expect(list.head.next.next.data).to eq("duub")
+    expect(list.head.next.next.next).to eq nil
   end
   
 # feature .count
@@ -90,19 +90,19 @@ RSpec.describe LinkedList do
 
     list.prepend("beep")
     expect(list.head.data).to eq("beep")
-    expect(list.head.next_node.data).to eq("doop")
+    expect(list.head.next.data).to eq("doop")
   end
 
- # feature .move_position
+ # feature move_to
   it 'can find the current node position' do
     list = LinkedList.new
     node_1 = list.append("doop")
     node_2 = list.append("beep")
     node_3 = list.append("duub")
 
-    expect(list.move_position(1)).to eq(node_1)
-    expect(list.move_position(2)).to eq(node_2)
-    expect(list.move_position(3)).to eq(node_3)
+    expect(list.move_to(1)).to eq(node_1)
+    expect(list.move_to(2)).to eq(node_2)
+    expect(list.move_to(3)).to eq(node_3)
   end
 
 # feature .insert
@@ -114,7 +114,7 @@ RSpec.describe LinkedList do
 
     list.insert(1,"siip")
     expect(list.to_string).to eq("doop siip beep duub")
-    expect(list.head.next_node.data).to eq("siip")
+    expect(list.head.next.data).to eq("siip")
   end
 
   it 'gives an error if trying to insert node at invalid position' do
