@@ -1,7 +1,5 @@
 require './lib/linked_list'
 require './lib/node'
-require 'rspec'
-require 'pry'
 
 
 RSpec.describe LinkedList do
