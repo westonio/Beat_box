@@ -140,6 +140,7 @@ RSpec.describe LinkedList do
     list.append("duub")
 
     list.insert(3,"siip")
+    
     expect(list.to_string).to eq("doop beep duub siip")
   end
 

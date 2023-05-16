@@ -25,9 +25,9 @@ RSpec.describe BeatBox do
 
     expect(bb.list.count).to eq(3)
     expect(bb.list.head.data).to eq("deep")
-    expect(bb.list.head.next_node.data).to eq("doo")
-    expect(bb.list.head.next_node.next_node.data).to eq("ditt")
-    expect(bb.list.head.next_node.next_node.next_node).to eq nil
+    expect(bb.list.head.next.data).to eq("doo")
+    expect(bb.list.head.next.next.data).to eq("ditt")
+    expect(bb.list.head.next.next.next).to eq nil
   end
 
   it 'can return the count of the list' do
