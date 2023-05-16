@@ -30,9 +30,7 @@ class LinkedList
   def to_string
     node = @head
     string = ""
-
     string = "Error: List is empty" if node.nil? # throws error if list is empty
-    
     until node.nil? 
       string += " #{node.data}"
       node = node.next
@@ -49,7 +47,6 @@ class LinkedList
   # Created .move_to method to reduce repeated code for .insert and .find
   def move_to(position)
     node = @head
-    
     (position - 1).times do # This ensures we add a node after the given node (e.g. the first node as the head is zero)
       node = node.next
     end
@@ -63,7 +60,6 @@ class LinkedList
       prepend(sound)
     else
       node = move_to(position)
-      
       if node.next.nil? # if at tail, just add
         node.add(sound)
       else # if not at the tail
@@ -81,7 +77,6 @@ class LinkedList
       "Argument Error: Starting at node #{position}, only #{count - position} node(s) can be returned"
     else
       node = move_to(position) # first move to position
-
       found = LinkedList.new
       return_num.times do
         node = node.next
@@ -94,18 +89,14 @@ class LinkedList
   def includes?(sound)
     node = @head
     includes = false
-    
     return "Error: List is empty" if node.nil? # first check to see if list is empty
-    
     until node.nil?
       if node.data == sound 
         includes = true 
         break # this ensures true is returned by stopping the loop
       end 
-      
       node = node.next
     end
-
     includes
   end
 
